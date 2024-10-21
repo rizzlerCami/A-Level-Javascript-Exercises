@@ -47,10 +47,13 @@ END TEMPLATE CODE
 function addValueToArray() {
     let valueToAdd = document.getElementById('valueToAdd').value;
     //add code to add a value to the array
+    valueArray.push(valueToAdd)
     hideModal();
 }
 
 function displayArray() {
     //add code to display items in array
+    for (let i=0; i < valueArray.length; i++) {
+        output.innerHTML += `${valueArray[i]}, `
+    }
 }
-
