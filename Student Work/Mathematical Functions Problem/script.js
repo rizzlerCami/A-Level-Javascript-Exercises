@@ -1,10 +1,7 @@
 // script1.js
-let base1 = document.getElementById("trapBase1").value
-let base2 = document.getElementById("trapBase2").value
-let height = document.getElementById("trapHeight").value
-let radius = document.getElementById("cylRadius").value
-let area = 0
-let volume = 0
+let base1 = 0
+let base2 = 0
+let height = 0
 // Function to calculate the area of a trapezium
 function trapezium() {
     // TODO: Write the formula to calculate trapezium area
@@ -17,25 +14,25 @@ function trapezium() {
 // Function to calculate the volume of a cylinder
 function cylVol() {
     // TODO: Write the formula for cylinder volume
-    radius = document.getElementById("cylRadius").value
+    base1 = document.getElementById("cylRadius").value
     height = document.getElementById("cylHeight").value
-    output2.innerHTML = `Volume = ${height * Math.PI * radius ** 2}`
+    output2.innerHTML = `Volume = ${height * Math.PI * base1 ** 2}`
 }
 
 // Function to calculate the total surface area of a cylinder
 function cylArea() {
     // TODO: Write the formula for cylinder surface area
-    radius = document.getElementById("cylRadius").value
+    base1 = document.getElementById("cylRadius").value
     height = document.getElementById("cylHeight").value
-    output2.innerHTML = `Area = ${2 * Math.PI * radius * (Number(radius) + Number(height))}`
+    output2.innerHTML = `Area = ${2 * Math.PI * base1 * (Number(base1) + Number(height))}`
 }
 
 // Function to calculate the volume of a cone
 function cone() {
     // TODO: Write the formula for cone volume
-    radius = document.getElementById("coneRadius").value
+    base1 = document.getElementById("coneRadius").value
     height = document.getElementById("coneHeight").value
-    output3.innerHTML = `Volume = ${Math.PI * radius**2 * height / 3}`
+    output3.innerHTML = `Volume = ${Math.PI * base1**2 * height / 3}`
 }
 
 // Function to calculate the hypotenuse using Pythagoras' theorem
