@@ -23,29 +23,33 @@ document.addEventListener("DOMContentLoaded", function() {
     // Sort the array using the student-defined sorting function
     function sortArray() {
         const array = JSON.parse(arrayDisplay.textContent);
-        const sortedArray = bubbleSort(array); // Example sorting algorithm to be replaced by the student
+        const sortedArray = quickSort(array); // Example sorting algorithm to be replaced by the student
         sortedArrayDisplay.textContent = JSON.stringify(sortedArray);
     }
 
 
-    function bubbleSort(array) {
-        let ___ = array.________;
-        let _______;
-    
-        do {
-            _______ = false;
-            for (let i = 0; i < ___ - 1; i++) {
-                if (array[i] > array[___]) {
-                    let temp = array[i];
-                    array[i] = array[___];
-                    array[___] = temp;
-                    _______ = true;
+    function quickSort(array) {
+        while (left.length > 1 && right.length > 1) {
+            let anchor = array.pop()
+            let left = []
+            let right = []
+            for (let i = 0; i < array.length; i++) {
+                if (anchor < array[i]) {
+                    right.push(array[i])
+                } else {
+                    left.push(array[i])
                 }
             }
-            ___--;
-        } while (_______);
-    
-        return array;
+            if (left.length > 1) {
+                quickSort(left)
+            } else if (right.length > 1) {
+                quickSort(right)
+            } else {
+                left.append(anchor)
+                left.concat(right)
+                return left
+            }
+        }
     }
     
 
