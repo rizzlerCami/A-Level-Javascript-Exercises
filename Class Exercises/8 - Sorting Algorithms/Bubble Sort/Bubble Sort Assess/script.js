@@ -30,10 +30,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function bubbleSort(array) {
         let swap = true
-        let temp
-        while (swap == true) {
+        let n = array.length
+        while (swap) {
             swap = false
-            for (let i = 0; i < array.length - 1; i++) {
+            for (let i = 0; i < n - 1; i++) {
                 if (array[i] > array[i + 1]) {
                     temp = array[i]
                     array[i] = array[i+1]
@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     swap = true
                 }
             }
+            n--
         }
         return array
     }
