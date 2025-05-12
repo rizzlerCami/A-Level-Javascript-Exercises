@@ -17,7 +17,7 @@ function binarySearch(array, target) {
     let m
     let foundIndex = -1
     while (l <= r && foundIndex == -1) {
-        mid = Math.floor((l+r) / 2)
+        m = Math.floor((l + r) / 2)
         if (target === array[m]) {
             foundIndex = m
         } else if (target < array[m]) {

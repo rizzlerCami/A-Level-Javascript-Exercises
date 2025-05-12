@@ -1,54 +1,61 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const arrayDisplay = document.getElementById("array-display");
-    const generateButton = document.getElementById("generate-btn");
-    const searchButton = document.getElementById("search-btn");
-    const searchInput = document.getElementById("search-input");
-    const searchResult = document.getElementById("search-result");
-
-    let currentArray = [];
-
-    function generateRandomArray() {
-        const array = [];
-        const size = Math.floor(Math.random() * 5) + 5;
-        for (let i = 0; i < size; i++) {
-            array.push(Math.floor(Math.random() * 100) + 1);
-        }
-        return array;
-    }
-
-    function displayArray(array) {
-        arrayDisplay.textContent = JSON.stringify(array);
-    }
-
-    //Write a linear search with the identifier studentSearch which takes two parameters
-    //The array to be searched and the item searched for
-    //return the index position of the item if found or -1 if not
-    
-
-    generateButton.addEventListener("click", function () {
-        currentArray = generateRandomArray();
-        displayArray(currentArray);
-        searchResult.textContent = "Result will appear here";
-        searchInput.value = "";
-    });
-
-    searchButton.addEventListener("click", function () {
-        const target = parseInt(searchInput.value, 10);
-        if (isNaN(target)) {
-            searchResult.textContent = "Please enter a valid number.";
-            return;
-        }
-
-        const index = studentSearch(currentArray, target);
-
-        if (index !== -1) {
-            searchResult.textContent = `Item found at index ${index}`;
+function linearSearch(array, target) {
+    let currentIndex = 0
+    let foundIndex = -1
+    while (foundIndex == -1 && currentIndex < array.length) {
+        if (array[currentIndex] === target) {
+            foundIndex = currentIndex
         } else {
-            searchResult.textContent = "Item not found";
+            currentIndex++
         }
-    });
+    }
+    return foundIndex
+}
 
-    // Initial setup
-    currentArray = generateRandomArray();
-    displayArray(currentArray);
-});
+function binarySearch(array, target) {
+    let r = array.length
+    let l = 0
+    let m
+    let foundIndex = -1
+    while (l <= r && foundIndex == -1) {
+        m = Math.floor((l + r) / 2)
+        if (target === array[m]) {
+            foundIndex = m
+        } else if (target < array[m]) {
+            r = m - 1
+        } else {
+            l = m + 1
+        }
+    }
+    return foundIndex
+}
+
+function bubbleSort(array) {
+    let swapped = true
+    let n = array.length
+    while (swapped) {
+        swapped = false
+        for (let i = 0; i < n - 1; i++) {
+            if (array[i] > array[i + 1]) {
+                let temp = array[i]
+                array[i] = array[i + 1]
+                array[i + 1] = temp
+                swapped = true
+            }
+        }
+        n--
+    }
+    return array
+}
+
+function insertionSort(array) {
+    for (let i = 1; i < array.length; i++) {
+        let j = i - 1
+        let current = array[i]
+        while (j >= 0 && array[j] > current) {
+            array[j + 1] = array[j]
+            j--
+        }
+        array[j + 1] = current
+    }
+    return array
+}
