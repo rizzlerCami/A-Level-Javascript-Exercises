@@ -41,6 +41,7 @@ function bubbleSort(array) {
         }
     }
 }
+//check if they've been swapped, another loop to check if item is greater than next
 
 function insertionSort(array) {
     for (let i = 1; i < array.length; i++) {
@@ -54,3 +55,4 @@ function insertionSort(array) {
     }
     return array
 }
+//i sets the bounds of sorting, j = the sorter. Check j >= 0 and if they need swapping
