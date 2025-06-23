@@ -50,12 +50,12 @@ function bubbleSort(array) {
 function insertionSort(array) {
     for (let i = 1; i < array.length; i++) {
         let j = i - 1
-        let current = array[i]
-        while (j >= 0 && array[j] > current) {
+        while (j >= 0 && array[j] > array[j + 1]) {
+            let temp = array[j + 1]
             array[j + 1] = array[j]
+            array[j] = temp
             j--
         }
-        array[j + 1] = current
     }
     return array
 }
