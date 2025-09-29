@@ -2,19 +2,18 @@
 // Create a Student class that extends Person and adds a study() method
 
 // Uncomment and complete below:
-// class Person {
-//   constructor(name) {
-//     // your code here
-//   }
-// }
-// class Student extends Person {
-//   study() {
-//     // your code here
-//   }
-// }
+ class Person {
+   constructor(name) {
+     this.name = name
+   }
+ }
+ class Student extends Person {
+   study() {
+     return this.name + " is studyig rn"
+   }
+ }
 
 document.getElementById("btnStudent").onclick = function() {
-  // const student = new Student("Ava");
-  // document.getElementById("output").innerText = student.study();
-  document.getElementById("output").innerText = "(Your Student class output will appear here)";
+   const student = new Student("Ava");
+   document.getElementById("output").innerText = student.study();
 };
