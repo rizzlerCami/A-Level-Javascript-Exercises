@@ -1,6 +1,5 @@
 // BankAccount class with encapsulation using private fields
 class BankAccount {
-  #balance;
   constructor(owner, initialBalance = 0) {
     this.owner = owner;
     this.#balance = initialBalance;
