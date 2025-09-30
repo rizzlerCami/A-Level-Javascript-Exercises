@@ -2,25 +2,23 @@
 // Add setMessage(msg) and reveal() methods
 
 // Uncomment and complete below:
-// class SecretMessage {
-//   #message;
-//   constructor() {
-//     // your code here
-//   }
-//   setMessage(msg) {
-//     // your code here
-//   }
-//   reveal() {
-//     // your code here
-//   }
-// }
+ class SecretMessage {
+   #message;
+   constructor() {
+     this.#message = ""
+   }
+   setMessage(msg) {
+     this.#message = msg
+   }
+   reveal() {
+     return this.#message
+   }
+ }
 
 const secret = new SecretMessage();
 document.getElementById("btnSet").onclick = function() {
-  // secret.setMessage("The cake is a lie!");
-  document.getElementById("output").innerText = "(Message set. Try reveal!)";
+   secret.setMessage("The cake is a lie!");
 };
 document.getElementById("btnReveal").onclick = function() {
-  // document.getElementById("output").innerText = secret.reveal();
-  document.getElementById("output").innerText = "(Your SecretMessage class output will appear here)";
+   document.getElementById("output").innerText = secret.reveal();
 };
