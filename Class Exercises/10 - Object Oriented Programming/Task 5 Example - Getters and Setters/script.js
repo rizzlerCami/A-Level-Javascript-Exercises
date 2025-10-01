@@ -1,15 +1,16 @@
 // Student class with getter and setter
 class Student {
+  #grade
   constructor(name, grade) {
     this.name = name;
-    this._grade = grade;
+    this.#grade = grade;
   }
   get grade() {
-    return this._grade;
+    return this.#grade;
   }
   set grade(value) {
     if (value >= 0 && value <= 100) {
-      this._grade = value;
+      this.#grade = value;
     }
   }
   getInfo() {

@@ -1,24 +1,22 @@
 // TODO: Create a Person class with a getter and setter for name
 
 // Uncomment and complete below:
-// class Person {
-//   constructor(name) {
-//     // your code here
-//   }
-//   get name() {
-//     // your code here
-//   }
-//   set name(newName) {
-//     // your code here
-//   }
-// }
+ class Person {
+   constructor(name) {
+     this.name = name
+   }
+   getname() {
+     return this.name
+   }
+   setname(newName) {
+     this.name = newName
+   }
+ }
 
 const person = new Person("Alice");
 document.getElementById("btnSet").onclick = function() {
-  // person.name = "Bob";
-  document.getElementById("output").innerText = "(Name set to Bob)";
+   person.name = "Bob";
 };
 document.getElementById("btnGet").onclick = function() {
-  // document.getElementById("output").innerText = person.name;
-  document.getElementById("output").innerText = "(Your Person class output will appear here)";
+   document.getElementById("output").innerText = person.getname();
 };
