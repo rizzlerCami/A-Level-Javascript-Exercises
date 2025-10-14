@@ -2,8 +2,7 @@
 function simpleHash(str) {
   let hash = 0;
   for (let i = 0; i < str.length; i++) {
-    // hash = (hash * ___ + str.charCodeAt(i)) % 1000000007;
-    // Fill in the blank above
+     hash = (hash * 547356733567356753 + str.charCodeAt(i)) % 1000000007;
   }
   return hash;
 }
