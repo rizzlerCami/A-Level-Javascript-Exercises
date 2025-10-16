@@ -1,54 +1,30 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const arrayDisplay = document.getElementById("array-display");
-    const generateButton = document.getElementById("generate-btn");
-    const searchButton = document.getElementById("search-btn");
-    const searchInput = document.getElementById("search-input");
-    const searchResult = document.getElementById("search-result");
-
-    let currentArray = [];
-
-    function generateRandomArray() {
-        const array = [];
-        const size = Math.floor(Math.random() * 5) + 5;
-        for (let i = 0; i < size; i++) {
-            array.push(Math.floor(Math.random() * 100) + 1);
-        }
-        return array;
-    }
-
-    function displayArray(array) {
-        arrayDisplay.textContent = JSON.stringify(array);
-    }
-
-    //Write a binary search with the identifier studentSearch which takes two parameters
-    //The array to be searched and the item searched for
-    //return the index position of the item if found or -1 if not
-    
-
-    generateButton.addEventListener("click", function () {
-        currentArray = generateRandomArray();
-        displayArray(currentArray);
-        searchResult.textContent = "Result will appear here";
-        searchInput.value = "";
-    });
-
-    searchButton.addEventListener("click", function () {
-        const target = parseInt(searchInput.value, 10);
-        if (isNaN(target)) {
-            searchResult.textContent = "Please enter a valid number.";
-            return;
-        }
-
-        const index = studentSearch(currentArray, target);
-
-        if (index !== -1) {
-            searchResult.textContent = `Item found at index ${index}`;
+function linearSearch(array, item) {
+    let currentIndex = 0
+    let foundIndex = -1
+    while (foundIndex == -1 && currentIndex < array.length) {
+        if (array[currentIndex] == item) {
+            foundIndex = currentIndex
         } else {
-            searchResult.textContent = "Item not found";
+            currentIndex++
         }
-    });
+    }
+    return foundIndex
+}
 
-    // Initial setup
-    currentArray = generateRandomArray();
-    displayArray(currentArray);
-});
+function binarySearch(array, item) {
+    let l = 0
+    let m 
+    let r = array.length - 1
+    let foundIndex = -1
+    while (foundIndex == -1 && l <= r) {
+        m = (l + r) div 2
+        if (array[m] === item) {
+            foundIndex = m
+        } else if (array[m] < item) {
+            l = m + 1
+        } else {
+            r = m - 1
+        }
+    }
+    return foundIndex
+}
