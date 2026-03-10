@@ -1,63 +1,49 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const arrayDisplay = document.getElementById("array-display");
-    const generateButton = document.getElementById("generate-btn");
-    const searchButton = document.getElementById("search-btn");
-    const searchInput = document.getElementById("search-input");
-    const searchResult = document.getElementById("search-result");
-
-    let currentArray = [];
-
-    function generateRandomArray() {
-        const array = [];
-        const size = Math.floor(Math.random() * 5) + 5;
-        for (let i = 0; i < size; i++) {
-            array.push(Math.floor(Math.random() * 100) + 1);
-        }
-        return array;
+function mergeSort(list) {
+  if (list.length <= 1) {
+    return list
+  }
+  let mid = Math.floor(list.length / 2)
+  let left = mergeSort(list.slice(0, mid))
+  let right = mergeSort(list.slice(mid))
+   let mergedList = []
+  let leftPointer = 0
+  let rightPointer = 0
+  while (leftPointer < left.length && rightPointer < right.length) {
+    if (left[leftPointer] < right[rightPointer]) {
+      mergedList.push(left[leftPointer])
+      leftPointer++
+    } else {
+      mergedList.push(right[rightPointer])
+      rightPointer++
     }
+  }
+  while (leftPointer < left.length) {
+    mergedList.push(left[leftPointer])
+      leftPointer++
+  }
+  while (rightPointer < right.length) {
+    mergedList.push(right[rightPointer])
+      rightPointer++
+  }
+return mergedList
+}
 
-    function displayArray(array) {
-        arrayDisplay.textContent = JSON.stringify(array);
+function quickSort(arr, low, high) {
+  if (low >= high) {
+    return
+  }
+  let i = low
+  let temp
+  for (let j = low; j <= high; j++) {
+    if (arr[j] <= arr[high]) {
+      temp = arr[j]
+      arr[j] = arr[i]
+      arr[i] = temp
+      i++
     }
-
-    function studentSearch(array, target) {
-        let foundIndex = -1;
-        let currentIndex = 0;
-        while (currentIndex < array.______ && foundIndex == -1) {
-            if (array[_____] === target) {
-                foundIndex = _____;
-            } else {
-            currentIndex++;
-            }
-        }
-        return _____;
-    }
-    
-
-    generateButton.addEventListener("click", function () {
-        currentArray = generateRandomArray();
-        displayArray(currentArray);
-        searchResult.textContent = "Result will appear here";
-        searchInput.value = "";
-    });
-
-    searchButton.addEventListener("click", function () {
-        const target = parseInt(searchInput.value, 10);
-        if (isNaN(target)) {
-            searchResult.textContent = "Please enter a valid number.";
-            return;
-        }
-
-        const index = studentSearch(currentArray, target);
-
-        if (index !== -1) {
-            searchResult.textContent = `Item found at index ${index}`;
-        } else {
-            searchResult.textContent = "Item not found";
-        }
-    });
-
-    // Initial setup
-    currentArray = generateRandomArray();
-    displayArray(currentArray);
-});
+  }
+  
+  quickSort(arr, low, i - 2)
+  quickSort(arr, i, high)
+  return arr
+}
